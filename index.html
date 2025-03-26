@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Celal Türkoğlu</title>
+  <link rel="shortcut icon" href="resim/icon.png" type="image/x-icon">
+  <style>
+    /* ------- Osmo [https://osmo.supply/] ------- */
+/* Osmo UI: https://slater.app/10324/23333.css */
+html {
+  scroll-behavior: auto; /* Manuel kaydırmalar için varsayılan hız */
+}
+
+body {
+  background-color: var(--color-neutral-900);
+  color: var(--color-light);
+  font-size: var(--size-font);
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  background-color: #1F2833;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-nav {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  margin: 0 20px;
+}
+
+.nav-link {
+  color: #e6f0f8;
+  font-family: Arial, Helvetica, sans-serif;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+
+.nav-link:hover {
+
+  color: #bbbdb7;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: row;
+    padding: 10px;
+  }
+
+  .navbar-nav {
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .nav-item {
+    margin: 10px 0; 
+  }
+}
+
+
+.cloneable {
+  padding: var(--container-padding);
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  display: flex;
+  position: relative;
+}
+
+
+.parallax__fade {
+  --color-dark-rgb: 0, 0, 0;
+	background: linear-gradient(to top, rgba(var(--color-dark-rgb), 1) 0%, rgba(var(--color-dark-rgb), 0.738) 19%, rgba(var(--color-dark-rgb), 0.541) 34%, rgba(var(--color-dark-rgb), 0.382) 47%, rgba(var(--color-dark-rgb), 0.278) 56.5%, rgba(var(--color-dark-rgb), 0.194) 65%, rgba(var(--color-dark-rgb), 0.126) 73%, rgba(var(--color-dark-rgb), 0.075) 80.2%, rgba(var(--color-dark-rgb), 0.042) 86.1%, rgba(var(--color-dark-rgb), 0.021) 91%, rgba(var(--color-dark-rgb), 0.008) 95.2%, rgba(var(--color-dark-rgb), 0.002) 98.2%, transparent 100%);
+}
+
+.osmo-icon-svg {
+  width: 8em;
+  position: relative;
+}
+
+.parallax__header {
+  z-index: 2;
+  padding: var(--section-padding) var(--container-padding);
+  justify-content: center;
+  align-items: center;
+  min-height: 100svh;
+  display: flex;
+  position: relative;
+}
+
+.parallax {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.parallax__content {
+  padding: var(--section-padding) var(--container-padding);
+  justify-content: center;
+  align-items: center;
+  min-height: 100svh;
+  display: flex;
+  position: relative;
+  background: radial-gradient(circle, #000000 80%,#1F2833 100%);
+}
+.cover {
+  object-fit: cover;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.parallax__visuals {
+  object-fit: cover;
+  width: 100%;
+  max-width: none;
+  height: 120%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.parallax__placeholder {
+  z-index: 0;
+  opacity: 0;
+  object-fit: cover;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.parallax__layers {
+  object-fit: cover;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.cover-copy {
+  object-fit: cover;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.parallax__fade {
+  z-index: 30;
+  object-fit: cover;
+  width: 100%;
+  max-width: none;
+  height: 20%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.parallax__black-line-overflow {
+  z-index: 20;
+  background-color: var(--color-black);
+  width: 100%;
+  height: 2px;
+  position: absolute;
+  bottom: -1px;
+
+  left: 0;
+}
+
+.parallax__title {
+  pointer-events: auto;
+  text-align: center;
+  text-transform: none;
+  margin-top: 0;
+  margin-bottom: .1em;
+  margin-right: .075em;
+  font-family: PP Neue Corp Wide, sans-serif;
+  font-size: 11vw;
+  font-weight: 800;
+  line-height: 1;
+  position: relative;
+  color: #1F2833; 
+  padding-bottom: 70px;
+}
+
+.parallax__radial-gradient {
+  z-index: 10;
+  background-image: radial-gradient(circle farthest-corner at 50% 50%, transparent, var(--color-black));
+  opacity: .5;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  position: fixed;
+  inset: 0;
+}
+
+.parallax__layer-title {
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100svh;
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.parallax__layer-img {
+  pointer-events: none;
+  object-fit: cover;
+  width: 100%;
+  max-width: none;
+  height: 117.5%;
+  position: absolute;
+  top: -17.5%;
+  left: 0;
+}
+
+.parallax__layer-img.is-third {
+  top: -20%;
+}
+.image-con{
+  display: flex;
+  justify-content: center;  
+  align-items: flex-end; 
+  height: 100vh;
+  padding-top: 200px;
+}
+
+.about-container {
+  text-align: left;
+  width: 90%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  color: #e6f3fd;
+  background: radial-gradient(circle, #1F2833 0%,#000000 100%);
+
+}
+
+/* Başlık stilleri */
+h1 {
+  font-size: 2em;
+  color: #bbbdb7;
+}
+
+h2 {
+  font-size: 1.2em;
+  margin-top: 10px;
+}
+
+/* Skills Section Stili */
+#skills {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: radial-gradient(circle, #000000 80%, #1F2833 100%);
+  color: #FFFFFF;
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+  margin-top: -40px;
+}
+
+.skills-container {
+  width: 80%;
+  max-width: 800px;
+  padding: 20px;
+  background: radial-gradient(circle, #1F2833 0%, #000000 100%);
+  border-radius: 15px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#h1skills {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #bbbdb7; /* Açık mavi renk */
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.skills-list {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  max-width: 600px;
+}
+
+.skills-list li {
+  font-size: 1.2rem;
+  padding: 15px;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+
+.skills-list li span {
+  margin-right: 10px;
+  font-size: 1.5rem;
+}
+
+.skills-list li:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+  color: #bbbdb7;
+}
+
+/* Responsive Tasarım */
+@media (max-width: 768px) {
+  .skills-container {
+    width: 90%;
+    padding: 15px;
+  }
+
+  #h1skills {
+    font-size: 2rem;
+  }
+
+  .skills-list li {
+    font-size: 1rem;
+    padding: 10px;
+  }
+}
+
+  .skills-list li {
+    font-size: 1em;
+  }
+
+
+
+/* Contact Section Stili */
+#contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: radial-gradient(circle, #000000 80%, #1F2833 100%);
+  color: #FFFFFF;
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+  padding: 20px;
+  margin-top: -10px;
+}
+#contact div{
+  background: radial-gradient(circle, #1F2833 0%, #000000 100%);
+  max-width: 100%;
+  width: 800px;
+  max-height: 50%;
+
+}
+
+#contact ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#contact ul li {
+  margin: 15px 0;
+  font-size: 2rem;
+}
+
+#contact ul li a {
+  color: #e6f3fd; /* Açık mavi renk */
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+}
+
+#contact ul li a:hover {
+  color: #bbbdb7; /* Daha koyu mavi hover efekti */
+  transform: translateY(-3px); /* Hafif yukarı hareket */
+}
+
+#contact ul li a::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background-color: #bbbdb7; /* Hoverda alt çizgi */
+  transition: width 0.3s ease;
+}
+
+#contact ul li a:hover::after {
+  width: 100%; /* Hoverda çizgi genişlesin */
+}
+
+
+/* Responsive tasarım */
+@media (max-width: 768px) {
+  .about-container {
+    width: 95%;
+    padding: 15px;
+  }
+}
+
+
+@font-face {
+  font-family: 'PP Neue Corp Wide';
+  src: url('https://cdn.prod.website-files.com/671752cd4027f01b1b8f1c7f/6717e399d30a606fed425914_PPNeueCorp-WideUltrabold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <ul class="navbar-nav">
+      <li class="nav-item"><a class="nav-link" href="#celal">Celal Türkoğlu</a></li>
+      <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+      <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+      <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+
+
+  <!--------- Osmo [https://osmo.supply/] --------->
+<div class="parallax">
+  <section id="celal" class="parallax__header">
+    <div class="parallax__visuals">
+      <div class="parallax__black-line-overflow"></div>
+      <div data-parallax-layers class="parallax__layers">
+        <img src="resim/resim1.webp" loading="eager" width="800" data-parallax-layer="1" alt="" class="parallax__layer-img">
+        <div class="image-con">
+          <img src="resim/resim2.webp" loading="eager" width="800"   data-parallax-layer="2" alt="" class="parallax__layer-img">
+        </div>
+          <div data-parallax-layer="3" class="parallax__layer-title">
+          <h2 class="parallax__title">Celal Türkoğlu</h2>
+        </div>
+        <img src="resim/celal.png" loading="eager" width="800" data-parallax-layer="4" alt="" class="parallax__layer-img">
+      </div>
+      <div class="parallax__fade"></div>
+    </div>
+  </section>
+  <section id="about" class="parallax__content">
+    <div class="about-container">
+      <h1>About Me</h1>
+      <h2>
+        Hello! I'm Celal, a 20-year-old computer engineering student at Karabük University. 
+        I have experience with technologies like HTML, CSS, JavaScript, SQL (Oracle APEX), 
+        and basic Python. Currently, I'm actively learning Node.js to improve my backend 
+        development skills, and I'm planning to start learning PostgreSQL next month 
+        to work with databases more effectively. While I've been introduced to PHP basics 
+        through university courses, my primary focus is on mastering Node.js for future projects. 
+        I've also developed automation projects using tools like Selenium and Appium. 
+        As a curious learner, I enjoy exploring diverse fields and continuously expanding 
+        my knowledge in software development.
+      </h2>          
+      <h2>I have several projects I plan to develop in the upcoming period and I'm working towards bringing them to life.</h2>
+    </div>
+    
+
+  </section>
+
+
+  <section id="skills" style="height:100vh; margin-top: -40px; background: radial-gradient(circle, #000000 80%,#1F2833 100%);">
+    <div class="skills-container">
+      <h1 id="h1skills">Skills</h1>
+      <ul class="skills-list">
+        <li><span>💻</span> HTML, CSS, JavaScript</li>
+        <li><span>🤝</span> Learing Node.js</li>
+        <li><span>📊</span> SQL (Oracle APEX)</li>
+        <li><span>🐍</span> Basic Python, C</li>
+        <li><span>🤖</span> Selenium, Appium</li>
+        <li><span>🛠️</span> Git & GitHub</li>
+        <li><span>🌍</span> B2 Level English</li>
+      </ul>
+    </div>
+  </section>
+
+
+  <section id="contact" style="height:100vh;   background: radial-gradient(circle, #000000 80%,#1F2833 100%); margin-top:-10px">
+    <div id="contact">
+    <ul>
+      <li><a href="https://www.linkedin.com/in/celal-t%C3%BCrko%C4%9Flu-394678297/" target="_blank">LinkedIn Profile</a></li>
+      <li><a href="https://github.com/CelalTurkoglu" target="_blank">GitHub Profile</a></li>
+      <li><a href="https://www.instagram.com/celalturkoglu15/" target="_blank">Instagram Profile</a></li>
+      <li><a href="mailto:celal2004@gmail.com">celal2004@gmail.com</a></li>
+      <li><a href="resim/cv.pdf" target="_blank">CV</a></li>
+    </ul>
+    </div>
+  </section>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+<script>
+  // ------- Osmo [https://osmo.supply/] ------- //
+
+document.addEventListener("DOMContentLoaded", () => {
+	// Register GSAP Plugins
+  gsap.registerPlugin(ScrollTrigger);
+  // Parallax Layers
+  document.querySelectorAll('[data-parallax-layers]').forEach((triggerElement) => {
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: triggerElement,
+        start: "0% 0%",
+        end: "100% 0%",
+        scrub: 0
+      }
+    });
+    const layers = [
+      { layer: "1", yPercent: 70 },
+      { layer: "2", yPercent: 55 },
+      { layer: "3", yPercent: 40 },
+      { layer: "4", yPercent: 10 }
+    ];
+    layers.forEach((layerObj, idx) => {
+      tl.to(
+        triggerElement.querySelectorAll(`[data-parallax-layer="${layerObj.layer}"]`),
+        {
+          yPercent: layerObj.yPercent,
+          ease: "none"
+        },
+        idx === 0 ? undefined : "<"
+      );
+    });
+  });
+});
+/* Lenis */
+const lenis = new Lenis();
+lenis.on('scroll', ScrollTrigger.update);
+gsap.ticker.add((time) => {lenis.raf(time * 1000);});
+gsap.ticker.lagSmoothing(0);
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  // Navbar linklerini alıyoruz
+  const navbarLinks = document.querySelectorAll('nav a');
+
+  // Her bir navbar bağlantısına tıklama olayını ekliyoruz
+  navbarLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+          // Scroll davranışını sadece tıklama esnasında aktifleştiriyoruz
+          document.documentElement.style.scrollBehavior = 'smooth';
+      });
+  });
+
+  // Sayfa dışındaki herhangi bir yere scroll yapılınca normal hızda hareket etmeye devam etmesi için
+  window.addEventListener('wheel', function() {
+      document.documentElement.style.scrollBehavior = 'auto';
+  });
+});
+
+</script>
+</body>
+</html>
