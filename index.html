@@ -465,7 +465,7 @@ h2 {
 }
 @media (max-width:768px){
   #projects{
-    height: 160vh;
+    height: 188vh;
   }
 }
 
@@ -704,7 +704,7 @@ h2 {
           <a href="https://www.youtube.com/watch?v=MTlzkZynrUk&t=41s&ab_channel=SageYaz%C4%B1l%C4%B1m" target="_blank">
             <div class="project-item">
               <span class="project-title">Click to See Car Company Website </span> 
-              <video src="resim/car.mov" class="projects-img" ></video>
+              <video src="resim/car.mp4" class="projects-img" ></video>
             </div>
           </a>
           </li>
@@ -720,7 +720,7 @@ h2 {
           <a href="https://www.youtube.com/watch?v=iuNghQTNKPY&t=23s&ab_channel=SageYaz%C4%B1l%C4%B1m" target="_blank">
             <div class="project-item">
               <span class="project-title">Click to See Login Page </span> 
-              <video src="resim/login.mov"  class="projects-img"></video>
+              <video src="resim/login.mp4"  class="projects-img"></video>
             </div>
           </a>
           </li>
@@ -873,16 +873,16 @@ document.addEventListener("DOMContentLoaded", function() {
 // Tüm videoları seçiyoruz
 const videos = document.querySelectorAll('.projects-img');
 
-// Her video için hover olaylarını dinliyoruz
 videos.forEach(video => {
+  video.muted = true; // Otomatik oynatma için mutlaka muted olmalı
   video.addEventListener('mouseenter', () => {
-    video.play();  // Hover yapıldığında video oynatılacak
-    video.loop = true;  // Döngüye alacak
+    video.play().catch(e => console.log("Video play failed:", e));
+    video.loop = true;
   });
 
   video.addEventListener('mouseleave', () => {
-    video.pause();  // Hover bitince video duracak
-    video.currentTime = 0;  // Videoyu başa alacak
+    video.pause();
+    video.currentTime = 0;
   });
 });
 
