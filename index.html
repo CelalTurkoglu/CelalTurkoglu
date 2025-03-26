@@ -19,6 +19,17 @@ body {
   margin: 0;
   padding: 0;
 }
+a:link, a:visited {
+  color: #e6f0f8;
+  text-decoration: solid;
+  cursor: auto;
+}
+a:hover{
+  color: #bbbdb7;
+}
+a:link:active, a:visited:active {
+  color: #e6f0f8;
+}
 
 .navbar {
   background-color: #1F2833;
@@ -31,6 +42,7 @@ body {
   top: 0;
   z-index: 1000;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
 }
 
 .navbar-nav {
@@ -58,21 +70,84 @@ body {
 .nav-link:hover {
 
   color: #bbbdb7;
+  cursor: pointer;
 }
 
+/* Hamburger menu icon */
+.hamburger {
+  display: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.hamburger .line {
+  width: 25px;
+  height: 3px;
+  background-color: #e6f0f8;
+  margin: 5px;
+  transition: all 0.3s ease;
+}
+
+/* Mobile menu styles */
 @media (max-width: 768px) {
   .navbar {
-    flex-direction: row;
-    padding: 10px;
+    justify-content: space-between;
+    padding: 10px 20px;
+
   }
 
   .navbar-nav {
-    flex-direction: row;
+    position: fixed;
+    top: 60px;
+    left: 0;
     width: 100%;
+    background-color: #1F2833;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+ 
+  .navbar-nav.active {
+    max-height: 300px;
+    padding: 20px 0;
+
   }
 
   .nav-item {
-    margin: 10px 0; 
+    margin: 10px 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-link {
+    width: 100%;
+    display: block;
+    padding: 15px 0;
+  }
+
+  .nav-link:hover{
+    color: #bbbdb7;
+  }
+
+  .hamburger {
+    display: block;
+    padding-right: 30px;
+  }
+
+  .hamburger.active .line:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+  }
+
+  .hamburger.active .line:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active .line:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
   }
 }
 
@@ -363,6 +438,108 @@ h2 {
     font-size: 1em;
   }
 
+/* Projects kısmı */
+.projects-container{
+  width: 80%;
+  max-width: 800px;
+  padding: 20px;
+  margin-top: 220px;
+  background: radial-gradient(circle, #1F2833 0%, #000000 100%);
+  border-radius: 15px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#projects {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 250vh;
+  background: radial-gradient(circle, #000000 80%, #1F2833 100%);
+  color: #FFFFFF;
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+  margin-top: -40px;
+}
+@media (max-width:768px){
+  #projects{
+    height: 160vh;
+  }
+}
+
+.projects-list {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  max-width: 600px;
+}
+
+.projects-list li {
+  font-size: 1.2rem;
+  padding: 15px;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+
+.project-item{
+
+  justify-content: center;
+  align-items: center;
+  padding-left: -10px;
+
+}
+
+.projects-list li span {
+  margin-right: 10px;
+  font-size: 1.5rem;
+}
+
+.projects-list li:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+  color: #bbbdb7;
+}
+
+.projects-img{
+  width: 100%;
+}
+
+
+@media (max-width: 768px){
+  .projects-img{
+    width: 100%;
+  }
+}
+
+
+/* Responsive Tasarım */
+@media (max-width: 768px) {
+  .projects-container {
+    width: 90%;
+    padding: 15px;
+  }
+
+  #h1skills {
+    font-size: 2rem;
+  }
+
+  .projects-list li {
+    font-size: 1rem;
+    padding: 10px;
+  }
+}
+
+  .projects-list li {
+    font-size: 1em;
+  }
 
 
 /* Contact Section Stili */
@@ -447,10 +624,19 @@ h2 {
 <body>
 
   <nav class="navbar">
+    <a class="nav-link" href="#celal">Celal Türkoğlu</a>
+    
+    <!-- Hamburger menu icon -->
+    <div class="hamburger">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </div>
+    
     <ul class="navbar-nav">
-      <li class="nav-item"><a class="nav-link" href="#celal">Celal Türkoğlu</a></li>
       <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
       <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+      <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
       <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
     </ul>
   </nav>
@@ -491,8 +677,6 @@ h2 {
       </h2>          
       <h2>I have several projects I plan to develop in the upcoming period and I'm working towards bringing them to life.</h2>
     </div>
-    
-
   </section>
 
 
@@ -507,6 +691,54 @@ h2 {
         <li><span>🤖</span> Selenium, Appium</li>
         <li><span>🛠️</span> Git & GitHub</li>
         <li><span>🌍</span> B2 Level English</li>
+      </ul>
+    </div>
+  </section>
+
+
+  <section id="projects">
+    <div class="projects-container">
+      <h1 id="h1skills">Projects</h1>
+      <ul class="projects-list">
+        <li>
+          <a href="https://www.youtube.com/watch?v=MTlzkZynrUk&t=41s&ab_channel=SageYaz%C4%B1l%C4%B1m" target="_blank">
+            <div class="project-item">
+              <span class="project-title">Click to See Car Company Website </span> 
+              <video src="resim/car.mov" class="projects-img" ></video>
+            </div>
+          </a>
+          </li>
+        <li>
+          <a href="https://github.com/CelalTurkoglu/Learning_JS" target="_blank">
+          <div class="project-item">
+            <span class="project-title">Click to See Calculator or RPS Game </span> 
+            <video src="resim/rps.mp4" class="projects-img" ></video>
+          </div>
+        </a>
+        </li>
+        <li>
+          <a href="https://www.youtube.com/watch?v=iuNghQTNKPY&t=23s&ab_channel=SageYaz%C4%B1l%C4%B1m" target="_blank">
+            <div class="project-item">
+              <span class="project-title">Click to See Login Page </span> 
+              <video src="resim/login.mov"  class="projects-img"></video>
+            </div>
+          </a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/watch?v=pgxG3jclCm4&ab_channel=CelalT%C3%9CRKO%C4%9ELU" target="_blank">
+              <div class="project-item">
+                <span class="project-title">Click to See AI Web Automation</span> 
+                <video src="resim/makale.mp4" class="projects-img" ></video>
+              </div>
+            </a>
+          </li>
+        <li>
+          <div class="project-item">
+            <span class="project-title">Automated CAPTCHA Bypass with Selenium</span> 
+            <video src="resim/vize.mp4" class="projects-img" ></video>
+          </div>
+        </li>
+        
       </ul>
     </div>
   </section>
@@ -561,6 +793,58 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+// Hamburger menu functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const hamburger = document.querySelector('.hamburger');
+  const navMenu = document.querySelector('.navbar-nav');
+  
+  hamburger.addEventListener('click', function() {
+    this.classList.toggle('active');
+    navMenu.classList.toggle('active');
+  });
+  
+  // Close menu when a nav link is clicked
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', function() {
+      hamburger.classList.remove('active');
+      navMenu.classList.remove('active');
+    });
+  });
+});
+
+// Your existing JavaScript remains the same
+document.addEventListener("DOMContentLoaded", () => {
+  // Register GSAP Plugins
+  gsap.registerPlugin(ScrollTrigger);
+  // Parallax Layers
+  document.querySelectorAll('[data-parallax-layers]').forEach((triggerElement) => {
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: triggerElement,
+        start: "0% 0%",
+        end: "100% 0%",
+        scrub: 0
+      }
+    });
+    const layers = [
+      { layer: "1", yPercent: 70 },
+      { layer: "2", yPercent: 55 },
+      { layer: "3", yPercent: 40 },
+      { layer: "4", yPercent: 10 }
+    ];
+    layers.forEach((layerObj, idx) => {
+      tl.to(
+        triggerElement.querySelectorAll(`[data-parallax-layer="${layerObj.layer}"]`),
+        {
+          yPercent: layerObj.yPercent,
+          ease: "none"
+        },
+        idx === 0 ? undefined : "<"
+      );
+    });
+  });
+});
 /* Lenis */
 const lenis = new Lenis();
 lenis.on('scroll', ScrollTrigger.update);
@@ -583,6 +867,22 @@ document.addEventListener("DOMContentLoaded", function() {
   // Sayfa dışındaki herhangi bir yere scroll yapılınca normal hızda hareket etmeye devam etmesi için
   window.addEventListener('wheel', function() {
       document.documentElement.style.scrollBehavior = 'auto';
+  });
+});
+
+// Tüm videoları seçiyoruz
+const videos = document.querySelectorAll('.projects-img');
+
+// Her video için hover olaylarını dinliyoruz
+videos.forEach(video => {
+  video.addEventListener('mouseenter', () => {
+    video.play();  // Hover yapıldığında video oynatılacak
+    video.loop = true;  // Döngüye alacak
+  });
+
+  video.addEventListener('mouseleave', () => {
+    video.pause();  // Hover bitince video duracak
+    video.currentTime = 0;  // Videoyu başa alacak
   });
 });
 
